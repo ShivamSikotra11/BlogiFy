@@ -14,7 +14,13 @@ const { checkForAuthenticationCookie } = require("./middlewares/authMiddleWare")
 
 const app = express();
 const PORT = process.env.PORT || 8000;
-
+app.use(cors(
+  {
+    origin:["https://blogi-fy-three.vercel.app/","http://localhost:8000"],
+    methods:["GET","POST"],
+    credentials:true
+  }
+));
 mongoose
   .connect(
     process.env.MONGO_URL
